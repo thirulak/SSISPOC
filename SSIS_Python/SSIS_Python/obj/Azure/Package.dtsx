@@ -1,0 +1,1250 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/15/2025 12:37:18 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="GWT-649MS04"
+  DTS:CreatorName="GAINWELL\tramya"
+  DTS:DTSID="{3351D1A8-0362-40CF-9617-C98260555588}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5467.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="58"
+  DTS:VersionGUID="{881FB378-3FE2-4D27-85F6-42B61D7DA329}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FTP source]"
+      DTS:CreationName="FTP"
+      DTS:DTSID="{17A0C828-64BF-4227-8E9E-CC058F06CDEA}"
+      DTS:ObjectName="FTP source">
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Project::ftphost]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerPassword">@[$Project::ftppassword]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerUserName">@[$Project::ftpusername]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="eu-central-1.sftpcloud.io:21">
+          <DTS:FtpConnection
+            DTS:ServerName="eu-central-1.sftpcloud.io"
+            DTS:ServerUserName="22ef8b31f97c4b21b1574e3a6c72ef60"
+            DTS:UsePassiveMode="True">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoRArMvH61UG5OTT9bINqfwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAD5vaHGWI5i7aAd8UhyBK1vD8kuQfaqqa+a0XimEV1IMgAAAAAOgAAAAAIAACAAAACyPpHRD5MqtzFtbFfF81EESuDLujRGtc19tKSsbJSXuFAAAABor2lrYjW0Ct9hdCtYS/W6RlzxccR+M80RwTL9XTtB4ULT/zznbn8ALao1g00yAImlOPNTWWAaFkbsxJAtS/PXFsENIs95fNagqQeKXd8LvEAAAAA86G2r2xc7vATE3NBGqwnJFeUBNIMl8x6ZcxtP2pG3I0HUh5ZsWHFfEVTwkqbOvvaUEbZH36dT6YpzP5ONibLP</DTS:Property>
+          </DTS:FtpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SQLDestination]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{68E39336-DF71-479B-99E3-E4F9D246EBF1}"
+      DTS:ObjectName="SQLDestination">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Project::DBname]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="Password">@[$Project::Password]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Project::SQLServername]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="UserName">@[$Project::Username]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=GWT-649MS04\MSSQLSERVER01;User ID=RamyaGainwell;Initial Catalog=Gainwell_RD;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;Application Name=SSIS-Package-{68E39336-DF71-479B-99E3-E4F9D246EBF1}GWT-649MS04\MSSQLSERVER01.master;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoRArMvH61UG5OTT9bINqfwAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADv1PKoXNKvCk2rlXWN0riSPTXGvR1LgPHGHS25//1QwgAAAAAOgAAAAAIAACAAAAD8U3n5KGn1sXOx7rBPqvCNHsKfXTgUWpGHezacqxxTGCAAAACLFum9exw2qhrCH9fqb1sCHUObzQ9Q2D2D6XPWIS/PVUAAAACwvsoFjltyhf6SULVVMOszeXwqYmfN2UM+nfj8Y3VI0NyUo2nEPhsAGyqDimYqJ0s/r1go2ztBu3SL68hgQg3f</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SSIS]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{C6B383C9-1388-476D-8606-077F855C7815}"
+      DTS:ObjectName="SSIS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="C:\Ramya\SSIS" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SSIS_Test]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{D598999F-A926-49E9-9B5C-1AD8C6167E37}"
+      DTS:ObjectName="SSIS_Test">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1033"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Ramya\SSIS\Ramya\SSIS\ssistestfinal.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="employee_id"
+              DTS:DTSID="{B08ACCDF-26EC-4F35-91F0-F1194F6DEBE7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName=" first_name"
+              DTS:DTSID="{F72173B1-C09E-4017-88BA-13D8375C8A48}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName=" last_name"
+              DTS:DTSID="{F407900D-8FD4-494F-8D0B-611C88A9F72B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName=" email"
+              DTS:DTSID="{FE8FA813-38E5-4865-BFA2-39FF4D23B2FC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName=" phone_number"
+              DTS:DTSID="{C76A4BB1-D2DD-40CE-83CE-0BCAB47886B8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:DataType="7"
+              DTS:TextQualified="True"
+              DTS:ObjectName=" hire_date"
+              DTS:DTSID="{71EB4E2C-7B0F-4249-8941-281C0DA6EAA3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="100"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName=" job_id"
+              DTS:DTSID="{16E964B0-6137-43F7-B029-51BD3A1BB511}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName=" salary"
+              DTS:DTSID="{7FC53616-851F-44D7-A67F-A722CB2EA67D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName=" department_id"
+              DTS:DTSID="{3DF5EE5A-7F5E-4063-B0A6-D80AAA41E457}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName=" manager_id"
+              DTS:DTSID="{FCA92782-7CD4-48AD-86E6-323F5886F436}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{29A0A380-35E9-4590-8F70-A3B7D43E5ED5}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Fileupload">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Ramya\SSIS</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{A6F91E2C-274A-4F8C-9C3B-5838A03F2C9A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ftphost">
+      <DTS:VariableValue
+        DTS:DataType="8">eu-central-1.sftpcloud.io</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{85425B41-12F4-4ADC-8513-5333C6C7CBAC}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ftppassword">
+      <DTS:VariableValue
+        DTS:DataType="8">VUMBAH1JXf1zLMHgp6je5u4wVi6PR2Bt</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D70269C9-1039-4AB5-885F-3E2F3B5B3183}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ftpremotepath">
+      <DTS:VariableValue
+        DTS:DataType="8">/test/SSIS_TEST.zip</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{12749001-53BB-42B4-95DF-D474E414A0CC}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FTPUSERNAME">
+      <DTS:VariableValue
+        DTS:DataType="8">22ef8b31f97c4b21b1574e3a6c72ef60</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C429DDE0-12D8-4C18-B637-CB24A507589A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="zipfile">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Ramya\SSIS\SSIS_TEST.zip</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\AddEmployee_sp"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{491F1655-6FD8-44F1-B5E4-5EB518B805E6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="AddEmployee_sp"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68E39336-DF71-479B-99E3-E4F9D246EBF1}"
+          SQLTask:SqlStatementSource="EXEC dbo.AddEmployee" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{254F4741-53A6-4045-BAC9-F20819180A0B}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Server"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Server"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[employees_1]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Server.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SQLDestination]"
+                  connectionManagerRefId="Package.ConnectionManagers[SQLDestination]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].Columns[employee_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="employee_id"
+                      externalMetadataColumnId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[employee_id]"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[employee_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].Columns[ first_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName=" first_name"
+                      externalMetadataColumnId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ first_name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].Columns[ last_name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName=" last_name"
+                      externalMetadataColumnId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ last_name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].Columns[ email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName=" email"
+                      externalMetadataColumnId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ email]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].Columns[ phone_number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName=" phone_number"
+                      externalMetadataColumnId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[phone_number]"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ phone_number]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].Columns[ job_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName=" job_id"
+                      externalMetadataColumnId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[job_id]"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ job_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].Columns[ salary]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName=" salary"
+                      externalMetadataColumnId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[salary]"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ salary]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].Columns[ hire_date]"
+                      cachedDataType="date"
+                      cachedName=" hire_date"
+                      externalMetadataColumnId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[hire_date]"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ hire_date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].Columns[ department_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName=" department_id"
+                      externalMetadataColumnId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[department_id]"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ department_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].Columns[ manager_id]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName=" manager_id"
+                      externalMetadataColumnId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[manager_id]"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ manager_id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[employee_id]"
+                      dataType="i4"
+                      name="employee_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="first_name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="last_name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[phone_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="phone_number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[hire_date]"
+                      dataType="dbDate"
+                      name="hire_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[job_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="job_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[salary]"
+                      dataType="numeric"
+                      name="salary"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[department_id]"
+                      dataType="i4"
+                      name="department_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input].ExternalColumns[manager_id]"
+                      dataType="i4"
+                      name="manager_id" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Server.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Server.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Server.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Server.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Server.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\SSIS_TEST"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="1033"
+              name="SSIS_TEST"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\SSIS_TEST.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SSIS_Test]"
+                  connectionManagerRefId="Package.ConnectionManagers[SSIS_Test]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[employee_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[employee_id]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[employee_id]"
+                      name="employee_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ last_name]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ last_name]"
+                      name=" last_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ email]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ email]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ email]"
+                      name=" email"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ phone_number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ phone_number]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ phone_number]"
+                      name=" phone_number"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ hire_date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ hire_date]"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ hire_date]"
+                      name=" hire_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ job_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ job_id]"
+                      length="100"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ job_id]"
+                      name=" job_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ salary]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ salary]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ salary]"
+                      name=" salary"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ department_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ department_id]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ department_id]"
+                      name=" department_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ manager_id]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ manager_id]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ manager_id]"
+                      name=" manager_id"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ first_name]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].Columns[ first_name]"
+                      name=" first_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[employee_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="employee_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ last_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name=" last_name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name=" email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ phone_number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name=" phone_number" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ hire_date]"
+                      dataType="date"
+                      name=" hire_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ job_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name=" job_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ salary]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name=" salary" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ department_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name=" department_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ manager_id]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name=" manager_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output].ExternalColumns[ first_name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name=" first_name" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Flat File Source Output]"
+              endId="Package\Data Flow Task\Server.Inputs[OLE DB Destination Input]"
+              name="Flat File Source Output"
+              startId="Package\Data Flow Task\SSIS_TEST.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\FTP Cloud"
+      DTS:CreationName="Microsoft.FtpTask"
+      DTS:Description="FTP Task"
+      DTS:DTSID="{28F23599-5F8A-4E8E-9DAF-C67BBB71D9A0}"
+      DTS:ExecutableType="Microsoft.FtpTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="FTP Cloud"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FtpData
+          ConnectionName="{17A0C828-64BF-4227-8E9E-CC058F06CDEA}"
+          TaskOperationType="Receive"
+          TaskIsLocalPathVar="True"
+          TaskLocalPath="User::Fileupload"
+          TaskIsRemotePathVar="True"
+          TaskRemotePath="User::ftpremotepath"
+          TaskOverwriteDest="True" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Script Task"
+      DTS:CreationName="Microsoft.ScriptTask"
+      DTS:Description="Script Task"
+      DTS:Disabled="True"
+      DTS:DTSID="{34999E6F-D77F-4A2C-BF30-B0437336A7FE}"
+      DTS:ExecutableType="Microsoft.ScriptTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Script Task"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ScriptProject
+          Name="ST_6428eeb837994bf1994e56c11319deee"
+          VSTAMajorVersion="15"
+          VSTAMinorVersion="0"
+          Language="CSharp" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{22F3DB4B-573A-4933-A97E-9426A35E0F71}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{68E39336-DF71-479B-99E3-E4F9D246EBF1}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.employees_1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\unzipfile"
+      DTS:CreationName="Microsoft.ExecuteProcess"
+      DTS:Description="Task to unzip a file "
+      DTS:DTSID="{CC7B019D-AB23-4B1B-B7F9-388A82AC15F3}"
+      DTS:ExecutableType="Microsoft.ExecuteProcess"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="unzipfile"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecuteProcessData
+          Executable="C:\Users\tramya\AppData\Local\Programs\Python\Python313\python.exe"
+          Arguments="C:\Ramya\SSIS\zipprogram.py"
+          WorkingDirectory="C:\Ramya\SSIS" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\zipflatfile"
+      DTS:CreationName="Microsoft.ExecuteProcess"
+      DTS:Description="Task to zip a flat file"
+      DTS:Disabled="True"
+      DTS:DTSID="{95227691-79AE-4A0B-8483-9A3E18DCE9E3}"
+      DTS:ExecutableType="Microsoft.ExecuteProcess"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="zipflatfile"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <ExecuteProcessData
+          Executable="C:\Users\tramya\AppData\Local\Programs\Python\Python313\python.exe"
+          Arguments="C:\Ramya\SSIS\zipfileprogram.py"
+          WorkingDirectory="C:\Ramya\SSIS" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{433C9669-60F7-40B9-9CAD-F65F1E325EC7}"
+      DTS:From="Package\zipflatfile"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\unzipfile" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{EA1561FD-D9A7-4D1D-A815-973A59AC0A84}"
+      DTS:From="Package\Truncate"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Data Flow Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B623B9CA-7E02-4008-8015-C14A7B01EEDD}"
+      DTS:From="Package\unzipfile"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Truncate" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{6A7387E6-99B2-431A-8945-27B13C1DE6BB}"
+      DTS:From="Package\Data Flow Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\AddEmployee_sp" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{1D879F96-5269-4BC4-AA67-859C66681E56}"
+      DTS:From="Package\FTP Cloud"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\unzipfile" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\AddEmployee_sp"
+          TopLeft="661.666640374397,188.933334834841" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="649.166640871102,68.4666672107909" />
+        <NodeLayout
+          Size="123.2,41.6"
+          Id="Package\FTP Cloud"
+          TopLeft="52.4999979138375,117.866667603387" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Script Task"
+          TopLeft="246.666656865014,500.866670144928" />
+        <NodeLayout
+          Size="119.2,41.6"
+          Id="Package\Truncate"
+          TopLeft="449.999982118607,70.2000005578995" />
+        <NodeLayout
+          Size="116.8,41.6"
+          Id="Package\unzipfile"
+          TopLeft="274.999989072482,68.4666672107909" />
+        <NodeLayout
+          Size="119.2,41.6"
+          Id="Package\zipflatfile"
+          TopLeft="25.833332306809,18.2000001446406" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="145.033332306809,39.0000001446406">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="129.966656765673,50.2666670661503"
+              Start="0,0"
+              End="122.466656765673,50.2666670661503">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="60.9833283828365,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="60.9833283828365,0"
+                    Point2="64.9833283828365,0"
+                    Point3="64.9833283828365,4" />
+                  <mssgle:LineSegment
+                    End="64.9833283828365,46.2666670661503" />
+                  <mssgle:CubicBezierSegment
+                    Point1="64.9833283828365,46.2666670661503"
+                    Point2="64.9833283828365,50.2666670661503"
+                    Point3="68.9833283828365,50.2666670661503" />
+                  <mssgle:LineSegment
+                    End="122.466656765673,50.2666670661503" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="569.199982118607,90.1333338843452">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="79.9666587524949,0"
+              Start="0,0"
+              End="72.4666587524949,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="72.4666587524949,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="391.799989072482,90.1333338843452">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.1999930461253,0"
+              Start="0,0"
+              End="50.6999930461253,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="50.6999930461253,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="724.366640871102,110.066667210791">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.299999503295,78.8666676240501"
+              Start="0,0"
+              End="17.299999503295,71.3666676240501">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.433333812025" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.433333812025"
+                    Point2="0,39.433333812025"
+                    Point3="4,39.433333812025" />
+                  <mssgle:LineSegment
+                    End="13.299999503295,39.433333812025" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.299999503295,39.433333812025"
+                    Point2="17.299999503295,39.433333812025"
+                    Point3="17.299999503295,43.433333812025" />
+                  <mssgle:LineSegment
+                    End="17.299999503295,71.3666676240501" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="175.699997913838,138.666667603387">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="99.2999911586444,-43.800000392596"
+              Start="0,0"
+              End="91.7999911586444,-43.800000392596">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="53.3733282249946,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53.3733282249946,0"
+                    Point2="57.3733282249946,0"
+                    Point3="57.3733282249946,-4" />
+                  <mssgle:LineSegment
+                    End="57.3733282249946,-39.800000392596" />
+                  <mssgle:CubicBezierSegment
+                    Point1="57.3733282249946,-39.800000392596"
+                    Point2="57.3733282249946,-43.800000392596"
+                    Point3="61.3733282249946,-43.800000392596" />
+                  <mssgle:LineSegment
+                    End="91.7999911586444,-43.800000392596" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="134.4,41.6"
+          Id="Package\Data Flow Task\SSIS_TEST"
+          TopLeft="243.333323664136,81.4666673141056" />
+        <NodeLayout
+          Size="108.8,41.6"
+          Id="Package\Data Flow Task\Server"
+          TopLeft="534.999978741011,213.200001694361" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Flat File Source Output]"
+          TopLeft="310.533323664136,123.066667314106">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="278.866655076875,90.1333343802554"
+              Start="0,0"
+              End="278.866655076875,82.6333343802554">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.0666671901277" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.0666671901277"
+                    Point2="0,45.0666671901277"
+                    Point3="4,45.0666671901277" />
+                  <mssgle:LineSegment
+                    End="274.866655076875,45.0666671901277" />
+                  <mssgle:CubicBezierSegment
+                    Point1="274.866655076875,45.0666671901277"
+                    Point2="278.866655076875,45.0666671901277"
+                    Point3="278.866655076875,49.0666671901277" />
+                  <mssgle:LineSegment
+                    End="278.866655076875,82.6333343802554" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Server">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
