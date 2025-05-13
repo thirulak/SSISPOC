@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35130.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "SSIS_Python", "SSIS_Python\SSIS_Python.dtproj", "{BFBCEEEA-32FD-483D-9F95-619E9EE3770C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Azure|Default = Azure|Default
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFBCEEEA-32FD-483D-9F95-619E9EE3770C}.Azure|Default.ActiveCfg = Azure
+		{BFBCEEEA-32FD-483D-9F95-619E9EE3770C}.Azure|Default.Build.0 = Azure
+		{BFBCEEEA-32FD-483D-9F95-619E9EE3770C}.Development|Default.ActiveCfg = Development
+		{BFBCEEEA-32FD-483D-9F95-619E9EE3770C}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AAB5AA8E-E1B7-4FF0-9A68-999EB80DD82E}
+	EndGlobalSection
+EndGlobal
